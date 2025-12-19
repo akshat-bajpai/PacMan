@@ -39,20 +39,23 @@ public class PacMan extends JPanel implements ActionListener,KeyListener{
         }
 
         void updateVelocity(char direction){
-            if (direction=='U'){
-                this.velocityX=0;
-                this.velocityY=-tileSize/4;
-            }else if (direction == 'D'){
-                this.velocityX=0;
-                this.velocityY=tileSize/4;
-            }else if (direction == 'R'){
-                this.velocityX=tileSize/4;
-                this.velocityY=0;
-            }else if (direction =='L'){
-                this.velocityX=-tileSize/4;
-                this.velocityY=0;
+            int speed = tileSize / 12; 
+
+            if (direction == 'U'){
+                this.velocityX = 0;
+                this.velocityY = -speed;
+            } else if (direction == 'D'){
+                this.velocityX = 0;
+                this.velocityY = speed;
+            } else if (direction == 'R'){
+                this.velocityX = speed;
+                this.velocityY = 0;
+            } else if (direction == 'L'){
+                this.velocityX = -speed;
+                this.velocityY = 0;
             }
         }
+
 
         Block(int x,int y,int width,int height,Image image){
             this.image=image;
@@ -148,7 +151,7 @@ public class PacMan extends JPanel implements ActionListener,KeyListener{
             ghost.updateDirection(newDirection);
             
         }
-        gameLoop=new Timer(50,this);
+        gameLoop = new Timer(16, this); 
         gameLoop.start();
     }
 
@@ -334,7 +337,7 @@ public class PacMan extends JPanel implements ActionListener,KeyListener{
             gameOver=false;
             gameLoop.start();
         }
-        // System.out.println("Key Event : "+e.getKeyCode());
+        // System.out.println("Key Event : "+e.getKeyCode())
 
 
         if (e.getKeyCode()==KeyEvent.VK_UP){
